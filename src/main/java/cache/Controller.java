@@ -46,11 +46,14 @@ public class Controller {
     @GetMapping("/1")
     public void getProperties(){
         /*
-         * cacheProperties中保存选用的缓存类型，支持的类型有6种，具体查看CacheType类
+         * cacheProperties中保存properties设定的缓存类型，支持的类型有6种，具体查看CacheType类
          * 
          */
         log.info("缓存类型{}",cacheProperties.getType());
         
+        /*
+         * 缓存管理，可以在这个实例中查看具体的配置
+         */
         Collection<String> cacheNames = cacheManager.getCacheNames();
          for (String name : cacheNames) {
             log.info("已经配置的名：{}",name);
