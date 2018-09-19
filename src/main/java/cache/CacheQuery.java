@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CacheQuery {
     
+    
     private static final Logger log = LoggerFactory.getLogger(CacheQuery.class);
 
     @Cacheable(value="demo")
