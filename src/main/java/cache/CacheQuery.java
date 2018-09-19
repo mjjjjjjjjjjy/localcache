@@ -49,4 +49,5 @@ public class CacheQuery {
     public Object query4(long l) {
         return query(l);
     }
+
 }

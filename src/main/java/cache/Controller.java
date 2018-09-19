@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
+import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
@@ -53,11 +54,28 @@ public class Controller {
         
         /*
          * 缓存管理，可以在这个实例中查看具体的配置
+         * EhCache 的实现类为
+         * org.springframework.cache.ehcache.EhCacheCacheManager
          */
         Collection<String> cacheNames = cacheManager.getCacheNames();
          for (String name : cacheNames) {
             log.info("已经配置的名：{}",name);
         }
+         
+         
+         
+         /*
+          * 获取的类型为org.springframework.cache.ehcache
+          */
+         Cache cache2 = cacheManager.getCache("demo");
+         
+         /**
+          * 根据key进行数据的获取
+          */
+         String string = cache2.get(1L,String.class);
+         
+         log.info("key为1时的缓存数据为【{}】",string);
+         
         
     }
     
@@ -84,6 +102,7 @@ public class Controller {
     public void queryTest4(){
         log.info("查询返回值【{}】,调用不同类的方法，该方法调用另一个有@Cacheable注解的方法",cache.query4(1L));
     }
+    
     
     
 }

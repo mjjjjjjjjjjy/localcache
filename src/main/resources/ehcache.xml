@@ -2,6 +2,7 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
          updateCheck="false">
+         <!-- 默认缓存，给从cachemanager.addCache中生成的cache提供模板 -->
     	<defaultCache
             eternal="false"
             maxElementsInMemory="1000"
